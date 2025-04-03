@@ -47,11 +47,7 @@ export class UsersService {
     return this.users.find((user) => user.id === id);
   }
 
-  create(user: {
-    name: string;
-    email: string;
-    role: 'ADMIN' | 'ENGG' | 'STU';
-  }) {
+  create(user: User) {
     const highestId = this.users[this.users.length - 1].id;
     const newUser = { id: highestId + 1, ...user };
     console.log('newUser => ', newUser);

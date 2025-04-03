@@ -21,25 +21,25 @@ export class UsersController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: number): User | undefined {
-    return this.usersService.findOne(id);
+  findOne(@Param('id') id: string): User | undefined {
+    return this.usersService.findOne(+id);
   }
 
   @Post()
-  create(@Body() user: any): User {
+  create(@Body() user: User): User {
     return this.usersService.create(user);
   }
 
   @Patch(':id')
   updateOne(
-    @Param('id') id: number,
+    @Param('id') id: string,
     @Body() userUpdate: Record<string, any>,
   ): User | undefined {
-    return this.usersService.update(id, userUpdate);
+    return this.usersService.update(+id, userUpdate);
   }
 
   @Delete(':id')
-  delete(@Param('id') id: number) {
-    return this.usersService.delete(id);
+  delete(@Param('id') id: string) {
+    return this.usersService.delete(+id);
   }
 }
